@@ -1,0 +1,86 @@
+[
+    {
+        "StallID": "1",
+        "FoodName": "Sweet & Sour Chicken /w Rice",
+        "FoodImage": "https://media-cdn.tripadvisor.com/media/photo-s/04/65/c0/c2/mini-wok.jpg",
+        "FoodPrice": 3.50,
+        "Unavailable": "Thursday"
+    },
+    {
+        "StallID": "1",
+        "FoodName": "Salted Egg Chicken /w Rice",
+        "FoodImage": "https://chefquak.files.wordpress.com/2015/11/s6-50-salted-egg-chicken-rice-best-seller-not-bad.jpg",
+        "FoodPrice": 4.20,
+        "Unavailable": "Tuesday"
+    },
+    {
+        "StallID": "1",
+        "FoodName": "Sweet & Sour Pork /w Rice",
+        "FoodImage": "https://cfcdn2.azsg.opensnap.com/azsg/snapphoto/photo/L9/GSPW/3BG83VE9957D1D03F31974lv.jpg",
+        "FoodPrice": 3.0,
+        "Unavailable": "Friday"
+    },
+    {
+        "StallID": "2",
+        "FoodName": "Roasted Chicken Rice",
+        "FoodImage": "https://cdn.copymethat.com/media/orig_how-to-make-singapore-hainanese-roasted--2017020412515082466844wck.jpg",
+        "FoodPrice": 3.50,
+        "Unavailable": "Friday"
+    },
+    {
+        "StallID": "2",
+        "FoodName": "Hainanese Chicken Rice",
+        "FoodImage": "https://prod.static9.net.au/_/media/2017/05/26/15/55/Pohs-Hainanese-chicken-rice.jpg",
+        "FoodPrice": 3.0,
+        "Unavailable": "Tuesday"
+    },
+    {
+        "StallID": "2",
+        "FoodName": "Lemon Chicken Rice",
+        "FoodImage": "https://media-cdn.tripadvisor.com/media/photo-s/16/e6/ee/5d/lemon-chicken-cutlet.jpg",
+        "FoodPrice": 4.0,
+        "Unavailable": "Wednesday"
+    },
+    {
+        "StallID": "3",
+        "FoodName": "Roti Prata",
+        "FoodImage": "http://carnivalmunchies.com/wp-content/uploads/2017/02/roti-prata-600x350.jpg",
+        "FoodPrice": 2.0,
+        "Unavailable": "Wednesday"
+    },
+    {
+        "StallID": "3",
+        "FoodName": "Chicken Nasi Briyani",
+        "FoodImage": "https://recipes.timesofindia.com/thumb/69038542.cms?imgsize=563452&width=800&height=800",
+        "FoodPrice": 5.50,
+        "Unavailable": "Thursday"
+    },
+    {
+        "StallID": "3",
+        "FoodName": "Butter Thosai",
+        "FoodImage": "http://www.indobase.com/recipes/rec-images/dosa.jpg",
+        "FoodPrice": 2.30,
+        "Unavailable": "Monday"
+    },
+    {
+        "StallID": "4",
+        "FoodName": "Nasi Lemak",
+        "FoodImage": "https://d1alt1wkdk73qo.cloudfront.net/images/guide/6abb55670f06cebacdc5023d11367153/640x478_ac.jpg",
+        "FoodPrice": 4.20,
+        "Unavailable": "Monday"
+    },
+    {
+        "StallID": "4",
+        "FoodName": "Mee Rebus",
+        "FoodImage": "https://asiaflavor.com/wp-content/uploads/2018/06/Hawker-Style-Mee-Rebus-e1528833861184-everglow.jpg",
+        "FoodPrice": 3.90,
+        "Unavailable": "Friday"
+    },
+    {
+        "StallID": "4",
+        "FoodName": "Ayam Penyet",
+        "FoodImage": "https://i.hungrygowhere.com/cms/b3/16/12/fa/33124/b31612fa33124_566x424_fillbg_8228475dad.jpg",
+        "FoodPrice": 5.50,
+        "Unavailable": "Wednesday"
+    }
+]

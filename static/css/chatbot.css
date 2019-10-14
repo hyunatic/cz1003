@@ -1,0 +1,7 @@
+p.botText{
+    float:left;
+    color: red;
+}
+p.userText{
+    float:right;
+}

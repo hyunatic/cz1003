@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<body onload="redirect()">
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="https://media.giphy.com/media/hTUDmkdRdCIqJz6ZQD/giphy.gif" class="img-responsive" alt="">
+        </div>
+        <div class="col-lg-6">
+            <blockquote class="blockquote">
+                <p class="mb-0">Hello there! Please don't type random links. Bye Bye!
+                </p>
+                <footer class="blockquote-footer">가수 <cite title="Source Title">김현아</cite>
+                </footer>
+            </blockquote>
+            <p id="pageInfo"></p>
+        </div>
+    </div>
+
+    <script>
+        var seconds = 4;
+        // countdown timer. took 6 because page takes approx 1 sec to load 
+        var url = "{{url_for('StallPage')}}";
+        // variable for index.html url 
+        function redirect() {
+            if (seconds <= 0) {
+                // redirect to new url after counter  down. 
+                window.location = url;
+            } else {
+                seconds--;
+                document.getElementById("pageInfo").innerHTML = "Redirecting to Stall Page after " + seconds + " seconds."
+                setTimeout("redirect()", 1000)
+            }
+        } 
+    </script>
+</body>
+{% endblock %}
