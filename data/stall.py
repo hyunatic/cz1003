@@ -3,8 +3,8 @@ from datetime import date, timedelta, datetime
 import json
 
 #Load Stall Data from JSON File
-with open('data/stall.json') as f:
-  stall = json.load(f)
+with open('data/stall.json') as data:
+  stall = json.load(data)
 
 
 def GetAllStall():
