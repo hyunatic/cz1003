@@ -33,13 +33,13 @@
                             <span class="nav-tabs-title">Filter:</span>
                             <ul class="nav nav-tabs" data-tabs="tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#profile" data-toggle="tab">
+                                    <a class="nav-link {{stalltab}}" href="#profile" data-toggle="tab">
                                         <i class="material-icons">local_dining</i> All Stalls
                                         <div class="ripple-container"></div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#messages" data-toggle="tab">
+                                    <a class="nav-link {{searchtab}}" href="#messages" data-toggle="tab">
                                         <i class="material-icons">query_builder</i> Search by Time
                                         <div class="ripple-container"></div>
                                     </a>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="profile">
+                        <div class="tab-pane {{stalltab}}" id="profile">
                             <div class="row">
                                 {% for FoodStall in stall %}
                                 <div class="col-lg-3 col-md-6 col-sm-6 wow flipInY" data-wow-delay="1s">
@@ -68,7 +68,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="tab-pane" id="messages">
+                        <div class="tab-pane {{searchtab}}" id="messages">
                             <form method="POST" action="{{url_for('StallPage')}}">
                                 <div class="form-row">
                                     <div class="form-group col-md-5">

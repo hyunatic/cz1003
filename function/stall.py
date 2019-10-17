@@ -3,7 +3,8 @@ from datetime import date, timedelta, datetime
 import json
 
 #Load Stall Data from JSON File
-with open('data/stall.json') as data:
+#File path is viewed from './app.py' Flask App directory
+with open('model/stall.json') as data:
   stall = json.load(data)
 
 

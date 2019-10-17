@@ -1,7 +1,8 @@
 import json
 
 #Load Menu Data from JSON File
-with open('data/menu.json') as data:
+#File path is viewed from './app.py' Flask App directory
+with open('model/menu.json') as data:
   menuItem = json.load(data)
 
 def MenuItems():

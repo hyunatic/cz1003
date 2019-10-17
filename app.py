@@ -1,19 +1,19 @@
 #Import Python Web Framework (Flask)
 from flask import Flask, render_template, request, flash
-#Get Stall Data stored in data/stall.py
-from data.stall import GetAllStall, QueryStallByTimeSlot
-#Get Menu Items stored in data/menuitems.py
-from data.menuitems import MenuItems
+#Get Stall Data stored in function/stall.py
+from function.stall import GetAllStall, QueryStallByTimeSlot
+#Get Menu Items stored in function/menuitems.py
+from function.menuitems import MenuItems
 #Get Time Related Functions and Store filtering based on data and time
-from data.time import GetDay, GetDayOnly, GetTimeRange
+from function.time import GetDay, GetDayOnly, GetTimeRange
 #Get Stripe Public Key Used for Credit Card Payment
-from data.stripe import GetStripeKey
+from function.stripe import GetStripeKey
 #Import Stall search function as a class function using HTML WTForms Python Framework
 from form.SearchStallByDate import SearchStallByDate
 #Import Waiting List function as a class function using HTML WTForms Python Framework
 from form.QueueSystem import QueueSystem
 #Import chatbot function
-from data.chatbot import ChatBotReply
+from function.chatbot import ChatBotReply
 
 #Initialize Flask App
 app = Flask(__name__)
@@ -42,17 +42,21 @@ def HomePage():
 @app.route("/stall", methods=['GET', 'POST'])
 def StallPage():
     form = SearchStallByDate(request.form)
+    stalltab = "active"
+    searchtab = ""
     if request.method == 'POST' and form.validate():
         timeslot = dict(form.timeslot.choices).get(form.timeslot.data)
         date = form.date.data
         filteredstall = QueryStallByTimeSlot(timeslot, date)
+        stalltab = ""
+        searchtab = "active"
         #It will give user stall.html after the user has used the search function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html',stall = Stall, today = GetDay, form=form, filteredstall=filteredstall)
+        return render_template('stall.html',stall = Stall, today = GetDay, form=form, filteredstall=filteredstall, stalltab=stalltab, searchtab=searchtab)
     elif request.method == 'GET':
         #It will give users stall.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html',stall = Stall, today = GetDay, form=form)
+        return render_template('stall.html',stall = Stall, today = GetDay, form=form, stalltab=stalltab, searchtab=searchtab)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/menu/1
 #GET Request happens when you just load the page normally with parameters

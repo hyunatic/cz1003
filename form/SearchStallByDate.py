@@ -3,7 +3,7 @@ from wtforms import Form, SelectField, validators
 #import html date input field
 from wtforms.fields.html5 import DateField
 #Get Time Related Functions and Store filtering based on data and time
-from data.time import GetTimeRange
+from function.time import GetTimeRange
 
 #Call GetTimeRange function located in data/time.py
 TimeSlot = GetTimeRange()
