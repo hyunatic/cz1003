@@ -101,7 +101,7 @@
                                                 {% if MenuItem.Unavailable == day %}
                                                 <button disabled class="btn btn-primary">Unavailable on {{ MenuItem.Unavailable }}</button>
                                                 {% elif MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime %}
-                                                <button disabled class="btn btn-primary">Unavailable at this time</button>
+                                                <button disabled class="btn btn-primary">Available from {{MenuItem.SpecialMenuStartTime}} ~ {{MenuItem.SpecialMenuEndTime}}</button>
                                                 {% else %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
@@ -137,7 +137,7 @@
                                         <div class="card-footer">
                                             <div class="stats">
                                                 {% if MenuItem.Unavailable == day %}
-                                                <button disabled class="btn btn-primary">Unavailable Today</button>
+                                                <button disabled class="btn btn-primary">Unavailable on {{MenuItem.Unavailable}}</button>
                                                 {% else %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
@@ -164,8 +164,8 @@
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
-                                                {% if MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime%}
-                                                <button disabled class="btn btn-primary">Unavailable at this time</button>
+                                                {% if MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime %}
+                                                <button disabled class="btn btn-primary">Available from {{MenuItem.SpecialMenuStartTime}} ~ {{MenuItem.SpecialMenuEndTime}}</button>
                                                 {% else %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
@@ -190,6 +190,7 @@
                             <div class="row">
                                 {% for MenuItem in menu %}
                                 {% if MenuItem.StallID == id and MenuItem.Unavailable != day %}
+                                {% if MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="card mb-3">
                                         <img class="card-img-top" src="{{MenuItem.FoodImage}}" height="200"
@@ -212,6 +213,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                                 {% endif %}
                                 {% endfor %}
                             </div>
