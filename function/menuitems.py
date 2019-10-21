@@ -1,4 +1,6 @@
+#Import Java Script Object Notation (JSON) module
 import json
+from function.time import GetCurrentTime, GetDayOnly
 
 #Load Menu Data from JSON File
 #File path is viewed from './app.py' Flask App directory
@@ -11,19 +13,58 @@ def MenuItems():
 
 def StallMenu(stallid):
   #Create and empty list
-  filteredMenuItem = [];
+  filteredMenuItem = []
   for i in range(0,len(menuItem)):
     #Compare the StallID and append to the array
     if stallid == menuItem[i]["StallID"]:
       filteredMenuItem.append(menuItem[i])
-  #Returns the filtered menu list
+  #Returns the filtered menu list of current stall
   return filteredMenuItem
  
-def UnavailableMenu(stallid):
-    #Get Current StallID Menu as a list
-  filteredMenuItem = StallMenu(stallid)
-  for i in range(0,len(filteredMenuItem)):
-      if MenuItem.SpecialMenuStartTime > currenttime or MenuItem.SpecialMenuEndTime < currenttime
-    
-          
+def SpecialMenu(stallid):
+  #Get Current StallID Menu as a list
+  filteredMenuItems = StallMenu(stallid)
+  #Generate empty list to a unique store special menu items based on current time
+  specialMenuItems = []
+  #Get Current Time
+  currenttime = int(GetCurrentTime())
+  #Get Current Day [Monday, Tuesday ....]
+  day = GetDayOnly()
+  for i in range(0,len(filteredMenuItems)):
+      #Check For Unavailable Day is not today
+      if(day != filteredMenuItems[i]["Unavailable"]):
+        #Check if this item is in the special menu
+        if (filteredMenuItems[i]["SpecialMenuStartTime"] != 0 or filteredMenuItems[i]["SpecialMenuEndTime"] != 0):
+          #Check For Current Time with stall special menu time slot
+          if (filteredMenuItems[i]["SpecialMenuStartTime"] > currenttime or filteredMenuItems[i]["SpecialMenuEndTime"] < currenttime):
+            specialMenuItems.append(filteredMenuItems[i])
+  #Returns the filtered special menu list
+  return specialMenuItems    
 
+def UnavailableDayMenu(stallid):
+  #Get Current StallID Menu as a list
+  filteredMenuItems = StallMenu(stallid)
+  #Generate empty list to a unique store special menu items based on current time
+  UnavailableItems = []
+  #Get Current Day [Monday, Tuesday ....]
+  day = GetDayOnly()
+  for i in range(0,len(filteredMenuItems)):
+    #check for Unavailable day is today
+    if(day == filteredMenuItems[i]["Unavailable"]):
+      UnavailableItems.append(filteredMenuItems[i])
+  return UnavailableItems
+
+def AvailableMenu(stallid):
+   #Get Current StallID Menu as a list
+  filteredMenuItems = StallMenu(stallid)
+  #Generate empty list to a unique store special menu items based on current time
+  AvailableItems = []
+  #Get Current Day [Monday, Tuesday ....]
+  day = GetDayOnly()
+  for i in range(0,len(filteredMenuItems)):
+    #Check For Unavailable Day is not today
+    if(day != filteredMenuItems[i]["Unavailable"]):
+      #Check if this item is in the normal menu
+      if (filteredMenuItems[i]["SpecialMenuStartTime"] == 0 or filteredMenuItems[i]["SpecialMenuEndTime"] == 0):
+        AvailableItems.append(filteredMenuItems[i])
+  return AvailableItems

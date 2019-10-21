@@ -98,7 +98,8 @@
                                         <div class="card-footer">
                                             <div class="stats">
                                                 {% if MenuItem.Unavailable == day %}
-                                                <button disabled class="btn btn-primary">Unavailable on {{ MenuItem.Unavailable }}</button>
+                                                <button disabled class="btn btn-primary">Unavailable on
+                                                    {{ MenuItem.Unavailable }}</button>
                                                 {% elif  MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime == 0 %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
@@ -109,7 +110,9 @@
                                                         </script>
                                                 </form>
                                                 {% elif MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime > currenttime or MenuItem.SpecialMenuEndTime < currenttime %}
-                                                <button disabled class="btn btn-primary">Today Available from {{MenuItem.SpecialMenuStartTime}} ~ {{MenuItem.SpecialMenuEndTime}}</button>
+                                                <button disabled class="btn btn-primary">Today Available at
+                                                    {{MenuItem.SpecialMenuStartTime}} ~
+                                                    {{MenuItem.SpecialMenuEndTime}}</button>
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -122,32 +125,38 @@
                         </div>
                         <div class="tab-pane" id="messages">
                             <div class="row">
-                                {% for MenuItem in menu %}
+                                {% for SpecialItem in special %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="card mb-3">
-                                        <img class="card-img-top" src="{{MenuItem.FoodImage}}" height="200"
+                                        <img class="card-img-top" src="{{SpecialItem.FoodImage}}" height="200"
                                             alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ MenuItem.FoodName }}</h4>
-                                            <p class="card-text h2">{{ "${:,.2f}".format(MenuItem.FoodPrice) }}</p>
-                                            {{MenuItem.SpecialMenuStartTime}}
-                                            {{currenttime}}
-                                            {{MenuItem.SpecialMenuEndTime}}
+                                            <h4 class="card-title">{{ SpecialItem.FoodName }}</h4>
+                                            <p class="card-text h2">{{ "${:,.2f}".format(SpecialItem.FoodPrice) }}</p>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
-                                                {% if MenuItem.Unavailable == day %}
-                                                <button disabled class="btn btn-primary">Unavailable on {{MenuItem.Unavailable}}</button>
-                                                {% else %}
-                                                <form action="/thanks" method="post">
-                                                    <script src="https://checkout.stripe.com/checkout.js"
-                                                        class="stripe-button" data-key="{{ key }}"
-                                                        data-description="NTU Canteen System"
-                                                        data-amount="{{MenuItem.FoodPrice * 100}}" data-locale="auto"
-                                                        data-currency="sgd">
-                                                        </script>
-                                                </form>
-                                                {% endif %}
+                                                <button disabled class="btn btn-primary">Today Available at
+                                                    {{SpecialItem.SpecialMenuStartTime}} ~
+                                                    {{SpecialItem.SpecialMenuEndTime}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% for UnavailableItem in unavailable %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card mb-3">
+                                        <img class="card-img-top" src="{{UnavailableItem.FoodImage}}" height="200"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ UnavailableItem.FoodName }}</h4>
+                                            <p class="card-text h2">{{ "${:,.2f}".format(UnavailableItem.FoodPrice) }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                <button disabled class="btn btn-primary">Unavailable on
+                                                    {{ UnavailableItem.Unavailable }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -159,14 +168,14 @@
                         </div>
                         <div class="tab-pane" id="settings">
                             <div class="row">
-                                {% for MenuItem in menu %}
+                                {% for AvailableItem in available %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="card mb-3">
-                                        <img class="card-img-top" src="{{MenuItem.FoodImage}}" height="200"
+                                        <img class="card-img-top" src="{{AvailableItem.FoodImage}}" height="200"
                                             alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ MenuItem.FoodName }}</h4>
-                                            <p class="card-text h2">{{ "${:,.2f}".format(MenuItem.FoodPrice) }}</p>
+                                            <h4 class="card-title">{{ AvailableItem.FoodName }}</h4>
+                                            <p class="card-text h2">{{ "${:,.2f}".format(AvailableItem.FoodPrice) }}</p>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
@@ -174,7 +183,7 @@
                                                     <script src="https://checkout.stripe.com/checkout.js"
                                                         class="stripe-button" data-key="{{ key }}"
                                                         data-description="NTU Canteen System"
-                                                        data-amount="{{MenuItem.FoodPrice * 100}}" data-locale="auto"
+                                                        data-amount="{{AvailableItem.FoodPrice * 100}}" data-locale="auto"
                                                         data-currency="sgd">
                                                         </script>
                                                 </form>
@@ -185,7 +194,8 @@
                                 {% endfor %}
                             </div>
                             <br>
-                            <a href="{{ url_for('StallPage') }}" class="btn btn-danger wow fadeIn" data-wow-delay="1.4s">Back</a>
+                            <a href="{{ url_for('StallPage') }}" class="btn btn-danger wow fadeIn"
+                                data-wow-delay="1.4s">Back</a>
                         </div>
                     </div>
                 </div>

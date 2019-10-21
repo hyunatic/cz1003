@@ -1,42 +1,82 @@
 [
     {
-    "StallID": "1",
-    "Name": "Miniwok",
-    "Image": "https://images-na.ssl-images-amazon.com/images/I/51p-HsE-ENL._AC_SY400_.jpg",
-    "Description": "This quintessential mini wok favourite came with crispy and tender deep-fried chicken thigh pieces that are laid on a bed of flat rice noodles",
-    "OpeningTime": 830,
-    "ClosingTime": 1730,
-    "Closed": "Saturday,Sunday",
-    "Opened": "Monday~Friday"
-
-},
-{
-    "StallID": "2",
-    "Name": "Chicken Rice",
-    "Image": "https://prod.static9.net.au/_/media/2017/05/26/15/55/Pohs-Hainanese-chicken-rice.jpg",
-    "Description": "The Hainanese chicken rice is a dish that consists of succulent steamed white chicken cut into bite-size pieces and served on fragrant rice with some light soy sauce.",
-    "OpeningTime": 1030,
-    "ClosingTime": 1530,
-    "Closed": "Saturday,Sunday",
-    "Opened": "Monday~Friday"
-},
-{
-    "StallID": "3",
-    "Name": "Indian",
-    "Image": "https://media.karousell.com/media/photos/products/2018/06/01/authentic_briyani_dum_1527849454_da6cfb3c.jpg",
-    "Description": "Indian cuisine consists of a wide variety of regional and traditional cuisines native to the Indian subcontinent.",
-    "OpeningTime": 930,
-    "ClosingTime": 1730,
-    "Closed": "Saturday,Sunday",
-    "Opened": "Monday~Friday"
-},
-{
-    "StallID": "4",
-    "Name": "Nasi Padang",
-    "Image": "https://www.littlebigreddot.com/wp-content/uploads/2017/07/stirling-road-nasi-padang-2.jpg",
-    "Description": "Nasi Padang is a Padang steamed rice served with various choices of pre-cooked dishes originated from Indonesia.",
-    "OpeningTime": 730,
-    "ClosingTime": 1530,
-    "Closed": "Saturday,Sunday",
-    "Opened": "Monday~Friday"
-}]
+        "StallID": "1",
+        "Name": "Miniwok",
+        "Image": "https://images-na.ssl-images-amazon.com/images/I/51p-HsE-ENL._AC_SY400_.jpg",
+        "Description": "This quintessential mini wok favourite came with crispy and tender deep-fried chicken thigh pieces that are laid on a bed of flat rice noodles",
+        "OpeningTime": 830,
+        "ClosingTime": 1730,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "2",
+        "Name": "Chicken Rice",
+        "Image": "https://prod.static9.net.au/_/media/2017/05/26/15/55/Pohs-Hainanese-chicken-rice.jpg",
+        "Description": "The Hainanese chicken rice is a dish that consists of succulent steamed white chicken cut into bite-size pieces and served on fragrant rice with some light soy sauce.",
+        "OpeningTime": 1030,
+        "ClosingTime": 1530,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "3",
+        "Name": "Indian",
+        "Image": "https://media.karousell.com/media/photos/products/2018/06/01/authentic_briyani_dum_1527849454_da6cfb3c.jpg",
+        "Description": "Indian cuisine consists of a wide variety of regional and traditional cuisines native to the Indian subcontinent.",
+        "OpeningTime": 930,
+        "ClosingTime": 1730,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "4",
+        "Name": "Nasi Padang",
+        "Image": "https://www.littlebigreddot.com/wp-content/uploads/2017/07/stirling-road-nasi-padang-2.jpg",
+        "Description": "Nasi Padang is a Padang steamed rice served with various choices of pre-cooked dishes originated from Indonesia.",
+        "OpeningTime": 730,
+        "ClosingTime": 1530,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "5",
+        "Name": "Korean",
+        "Image": "https://zone-thebestsingapore-bhxtb9xxzrrdpzhqr.netdna-ssl.com/wp-content/uploads/2014/06/Best-Korean-Restaurant-Singapore.jpg",
+        "Description": "Korean cuisine is the customary cooking traditions and practices of the culinary arts of Korea",
+        "OpeningTime": 930,
+        "ClosingTime": 1730,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "6",
+        "Name": "Japanese",
+        "Image": "https://wa-shoku.info/wp/wp-content/uploads/2017/04/food1.jpg",
+        "Description": "Japanese cuisine encompasses the regional and traditional foods of Japan, which have developed through centuries of political, economic, and social changes",
+        "OpeningTime": 730,
+        "ClosingTime": 1830,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "7",
+        "Name": "Western",
+        "Image": "https://assets.grab.com/wp-content/uploads/sites/4/2018/09/24183131/western-grilled-chicken-food-delivery.jpg",
+        "Description": "Historically, European cuisine has been developed in the European royal and noble courts. European nobility was usually arms-bearing and lived in separate manors in the countryside.",
+        "OpeningTime": 930,
+        "ClosingTime": 1730,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    },
+    {
+        "StallID": "8",
+        "Name": "Yong Tau Foo",
+        "Image": "http://worldofflossy.com/wp-content/uploads/2017/07/People-Park-Hakka-Yong-Tau-Fu-Farrer-Park-Hawker-Tofu.jpg",
+        "Description": "Variation of this food include vegetables and mushrooms stuffed with ground meat or surimi. Yong tau foo is eaten in numerous ways, either dry with a sauce or served as a soup dish.",
+        "OpeningTime": 830,
+        "ClosingTime": 1630,
+        "Closed": "Saturday,Sunday",
+        "Opened": "Monday~Friday"
+    }
+]

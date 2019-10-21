@@ -4,7 +4,7 @@
         "FoodName": "Sweet & Sour Chicken /w Rice",
         "FoodImage": "https://media-cdn.tripadvisor.com/media/photo-s/04/65/c0/c2/mini-wok.jpg",
         "FoodPrice": 3.50,
-        "Unavailable": "Monday",
+        "Unavailable": "Tuesday",
         "SpecialMenuStartTime": 0,
         "SpecialMenuEndTime": 0
     },
@@ -13,7 +13,7 @@
         "FoodName": "Salted Egg Chicken /w Rice",
         "FoodImage": "https://chefquak.files.wordpress.com/2015/11/s6-50-salted-egg-chicken-rice-best-seller-not-bad.jpg",
         "FoodPrice": 4.20,
-        "Unavailable": "Tuesday",
+        "Unavailable": "Monday",
         "SpecialMenuStartTime": 1030,
         "SpecialMenuEndTime": 1230
     },

@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, flash
 #Get Stall Data stored in function/stall.py
 from function.stall import GetAllStall, QueryStallByTimeSlot
 #Get Menu Items stored in function/menuitems.py
-from function.menuitems import StallMenu
+from function.menuitems import StallMenu, SpecialMenu, UnavailableDayMenu, AvailableMenu
 #Get Time Related Functions and Store filtering based on data and time
 from function.time import GetDay, GetDayOnly, GetTimeRange, GetCurrentTime
 #Get Stripe Public Key Used for Credit Card Payment
@@ -70,18 +70,24 @@ def MenuPage(id):
     #Get the filtered stalls based on their ID
     MenuItems = StallMenu(id)
 
-    #Get the filtered stall based on their ID that are unavailable
+    #Get the filtered stall based on their ID that is a special menu based on time
+    SpecialMenuItems = SpecialMenu(id)
+
+    #Get the filter stall based on their Id that unavailable on current day [Monday,Tuess]
+    UnavailableDayItems = UnavailableDayMenu(id)
+
+    AvailableMenuItems = AvailableMenu(id)
 
     if request.method == 'POST' and form.validate():
         queuenumber = form.queuenumber.data
         queuenumber = int(queuenumber) * 2
         #It will give user menu.html after the user has used the waiting list function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
     else:
         #It will give users menu.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/thanks
 #GET Request happens when you just load the page normally with parameters
