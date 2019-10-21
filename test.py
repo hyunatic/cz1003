@@ -1,7 +1,4 @@
-number = 128
+from datetime import datetime
 
-def method(number):
-    return number + 2
-
-number = method(number)
-print(number)
+currenttime = datetime.now().strftime("%H%M")
+print(currenttime)

@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, flash
 #Get Stall Data stored in function/stall.py
 from function.stall import GetAllStall, QueryStallByTimeSlot
 #Get Menu Items stored in function/menuitems.py
-from function.menuitems import MenuItems
+from function.menuitems import StallMenu
 #Get Time Related Functions and Store filtering based on data and time
 from function.time import GetDay, GetDayOnly, GetTimeRange, GetCurrentTime
 #Get Stripe Public Key Used for Credit Card Payment
@@ -20,8 +20,6 @@ app = Flask(__name__)
 
 #Calling GetAllStall function in data/stall.py
 Stall = GetAllStall()
-#Calling MenuItems function in data/menuitems.py
-MenuItems = MenuItems()
 #Calling GetDay function in data/time.py (2019-09-10)
 GetDay = GetDay()
 #Calling GetDayOnly function in data/time.py (Wednesday)
@@ -52,11 +50,11 @@ def StallPage():
         searchtab = "active"
         #It will give user stall.html after the user has used the search function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html',stall = Stall, today = GetDay, form=form, filteredstall=filteredstall, stalltab=stalltab, searchtab=searchtab)
+        return render_template('stall.html', stall = Stall, today = GetDay, form=form, filteredstall=filteredstall, stalltab=stalltab, searchtab=searchtab)
     elif request.method == 'GET':
         #It will give users stall.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html',stall = Stall, today = GetDay, form=form, stalltab=stalltab, searchtab=searchtab)
+        return render_template('stall.html', stall = Stall, today = GetDay, form=form, stalltab=stalltab, searchtab=searchtab)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/menu/1
 #GET Request happens when you just load the page normally with parameters
@@ -66,17 +64,24 @@ def StallPage():
 def MenuPage(id):
     queuenumber = 0
     form = QueueSystem(request.form)
+    
+    #Get Current time
     currenttime = int(GetCurrentTime())
+    #Get the filtered stalls based on their ID
+    MenuItems = StallMenu(id)
+
+    #Get the filtered stall based on their ID that are unavailable
+
     if request.method == 'POST' and form.validate():
         queuenumber = form.queuenumber.data
         queuenumber = int(queuenumber) * 2
         #It will give user menu.html after the user has used the waiting list function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
     else:
         #It will give users menu.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/thanks
 #GET Request happens when you just load the page normally with parameters
