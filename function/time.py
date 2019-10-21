@@ -1,6 +1,11 @@
 #Import Date function for query
 from datetime import date, timedelta, datetime
 
+def GetCurrentTime():
+    #Create today's time in this format (2040)
+    currenttime = datetime.now().strftime("%H%M")
+    #Pass this value to app.py
+    return currenttime
 
 def GetDay():
     #Create today's date in this format (Saturday, 2019-09-10)

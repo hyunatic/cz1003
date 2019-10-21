@@ -5,7 +5,7 @@ from function.stall import GetAllStall, QueryStallByTimeSlot
 #Get Menu Items stored in function/menuitems.py
 from function.menuitems import MenuItems
 #Get Time Related Functions and Store filtering based on data and time
-from function.time import GetDay, GetDayOnly, GetTimeRange
+from function.time import GetDay, GetDayOnly, GetTimeRange, GetCurrentTime
 #Get Stripe Public Key Used for Credit Card Payment
 from function.stripe import GetStripeKey
 #Import Stall search function as a class function using HTML WTForms Python Framework
@@ -66,16 +66,17 @@ def StallPage():
 def MenuPage(id):
     queuenumber = 0
     form = QueueSystem(request.form)
+    currenttime = int(GetCurrentTime())
     if request.method == 'POST' and form.validate():
         queuenumber = form.queuenumber.data
         queuenumber = int(queuenumber) * 2
         #It will give user menu.html after the user has used the waiting list function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber)
+        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
     else:
         #It will give users menu.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber)
+        return render_template('menu.html', id=id, stall = Stall, menu = MenuItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/thanks
 #GET Request happens when you just load the page normally with parameters

@@ -98,8 +98,10 @@
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
-                                                {% if MenuItem.Unavailable == day%}
-                                                <button disabled class="btn btn-primary">Unavailable Today</button>
+                                                {% if MenuItem.Unavailable == day %}
+                                                <button disabled class="btn btn-primary">Unavailable on {{ MenuItem.Unavailable }}</button>
+                                                {% elif MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime %}
+                                                <button disabled class="btn btn-primary">Unavailable at this time</button>
                                                 {% else %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
@@ -136,6 +138,34 @@
                                             <div class="stats">
                                                 {% if MenuItem.Unavailable == day %}
                                                 <button disabled class="btn btn-primary">Unavailable Today</button>
+                                                {% else %}
+                                                <form action="/thanks" method="post">
+                                                    <script src="https://checkout.stripe.com/checkout.js"
+                                                        class="stripe-button" data-key="{{ key }}"
+                                                        data-description="NTU Canteen System"
+                                                        data-amount="{{MenuItem.FoodPrice * 100}}" data-locale="auto"
+                                                        data-currency="sgd">
+                                                        </script>
+                                                </form>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if MenuItem.StallID == id and MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card mb-3">
+                                        <img class="card-img-top" src="{{MenuItem.FoodImage}}" height="200"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ MenuItem.FoodName }}</h4>
+                                            <p class="card-text h2">{{ "${:,.2f}".format(MenuItem.FoodPrice) }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                {% if MenuItem.Unavailable != day and MenuItem.SpecialMenuStartTime < currenttime and MenuItem.SpecialMenuEndTime > currenttime%}
+                                                <button disabled class="btn btn-primary">Unavailable at this time</button>
                                                 {% else %}
                                                 <form action="/thanks" method="post">
                                                     <script src="https://checkout.stripe.com/checkout.js"
