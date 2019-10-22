@@ -35,7 +35,7 @@ def SpecialMenu(stallid):
       if(day != filteredMenuItems[i]["Unavailable"]):
         #Check if this item is in the special menu
         if (filteredMenuItems[i]["SpecialMenuStartTime"] != 0 or filteredMenuItems[i]["SpecialMenuEndTime"] != 0):
-          #Check For Current Time with stall special menu time slot
+          #Check For Current Time not within stall special menu time slot
           if not(filteredMenuItems[i]["SpecialMenuStartTime"] < currenttime < filteredMenuItems[i]["SpecialMenuEndTime"]):
             specialMenuItems.append(filteredMenuItems[i])
   #Returns the filtered special menu list
@@ -69,6 +69,7 @@ def AvailableMenu(stallid):
       #Check if this item is in the normal menu
       if (filteredMenuItems[i]["SpecialMenuStartTime"] == 0 or filteredMenuItems[i]["SpecialMenuEndTime"] == 0):
         AvailableItems.append(filteredMenuItems[i])
+        #Check For Current Time within stall special menu time slot
       if filteredMenuItems[i]["SpecialMenuStartTime"] < currenttime < filteredMenuItems[i]["SpecialMenuEndTime"]:
         AvailableItems.append(filteredMenuItems[i])
   return AvailableItems
