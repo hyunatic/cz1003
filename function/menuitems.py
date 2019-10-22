@@ -36,7 +36,7 @@ def SpecialMenu(stallid):
         #Check if this item is in the special menu
         if (filteredMenuItems[i]["SpecialMenuStartTime"] != 0 or filteredMenuItems[i]["SpecialMenuEndTime"] != 0):
           #Check For Current Time with stall special menu time slot
-          if (filteredMenuItems[i]["SpecialMenuStartTime"] > currenttime or filteredMenuItems[i]["SpecialMenuEndTime"] < currenttime):
+          if not(filteredMenuItems[i]["SpecialMenuStartTime"] < currenttime < filteredMenuItems[i]["SpecialMenuEndTime"]):
             specialMenuItems.append(filteredMenuItems[i])
   #Returns the filtered special menu list
   return specialMenuItems    
@@ -59,6 +59,8 @@ def AvailableMenu(stallid):
   filteredMenuItems = StallMenu(stallid)
   #Generate empty list to a unique store special menu items based on current time
   AvailableItems = []
+  #Get Current Time
+  currenttime = int(GetCurrentTime())
   #Get Current Day [Monday, Tuesday ....]
   day = GetDayOnly()
   for i in range(0,len(filteredMenuItems)):
@@ -66,5 +68,7 @@ def AvailableMenu(stallid):
     if(day != filteredMenuItems[i]["Unavailable"]):
       #Check if this item is in the normal menu
       if (filteredMenuItems[i]["SpecialMenuStartTime"] == 0 or filteredMenuItems[i]["SpecialMenuEndTime"] == 0):
+        AvailableItems.append(filteredMenuItems[i])
+      if filteredMenuItems[i]["SpecialMenuStartTime"] < currenttime < filteredMenuItems[i]["SpecialMenuEndTime"]:
         AvailableItems.append(filteredMenuItems[i])
   return AvailableItems

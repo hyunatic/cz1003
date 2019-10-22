@@ -14,8 +14,8 @@
         "FoodImage": "https://chefquak.files.wordpress.com/2015/11/s6-50-salted-egg-chicken-rice-best-seller-not-bad.jpg",
         "FoodPrice": 4.20,
         "Unavailable": "Monday",
-        "SpecialMenuStartTime": 1030,
-        "SpecialMenuEndTime": 1230
+        "SpecialMenuStartTime": 1230,
+        "SpecialMenuEndTime": 1430
     },
     {
         "StallID": "1",
@@ -107,5 +107,114 @@
         "Unavailable": "Wednesday",
         "SpecialMenuStartTime": 0,
         "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "5",
+        "FoodName": "Cold Noodles",
+        "FoodImage": "https://www.koreanbapsang.com/wp-content/uploads/2016/07/DSC_0061-e1468811244361.jpg",
+        "FoodPrice": 4.70,
+        "Unavailable": "Wednesday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "5",
+        "FoodName": "Spicy Rice Cake",
+        "FoodImage": "https://sifu.unileversolutions.com/image/en-SA/recipe-topvisual/2/1260-709/tteokbokki-recipe-50399726.jpg",
+        "FoodPrice": 3.00,
+        "Unavailable": "Friday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "5",
+        "FoodName": "Pork Belly",
+        "FoodImage": "https://www.maangchi.com/wp-content/uploads/2009/09/grilled-porkbelly_grilled.jpg",
+        "FoodPrice": 5.50,
+        "Unavailable": "Thursday",
+        "SpecialMenuStartTime": 1300,
+        "SpecialMenuEndTime": 1530
+    },
+    {
+        "StallID": "6",
+        "FoodName": "Chicken Karage",
+        "FoodImage": "https://static01.nyt.com/images/2018/07/25/dining/HK-karaage-horizontal/merlin_141075300_74569dec-9fc2-4174-931d-019dddef3bb8-articleLarge.jpg",
+        "FoodPrice": 4.50,
+        "Unavailable": "Monday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "6",
+        "FoodName": "Shoyu Ramen",
+        "FoodImage": "https://www.justonecookbook.com/wp-content/uploads/2017/07/Spicy-Shoyu-Ramen-NEW-500x375.jpg",
+        "FoodPrice": 5.00,
+        "Unavailable": "Tuesday",
+        "SpecialMenuStartTime": 1130,
+        "SpecialMenuEndTime": 1400
+    },
+    {
+        "StallID": "6",
+        "FoodName": "Sashimi",
+        "FoodImage": "https://www.tripsavvy.com/thmb/ZU_1JHqPGZ9lJltlUgYqtkiWnbE=/2578x2578/smart/filters:no_upscale()/sushi-plate-56a378d33df78cf7727d84f9.jpg",
+        "FoodPrice": 3.90,
+        "Unavailable": "Friday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "7",
+        "FoodName": "Fish and Chips",
+        "FoodImage": "https://www.delonghi.com/Global/recipes/multifry/173.jpg",
+        "FoodPrice": 6.90,
+        "Unavailable": "Friday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "7",
+        "FoodName": "Chicken Chop",
+        "FoodImage": "http://lh4.ggpht.com/CLy6MZS54bBbU3jsHEGUKNo2EDy4WDxlHWovVn20ZEDsR2k8uBngT9qj9kjPXx2xgtlV12JSSFLVhnkkKY_o6bA=s800",
+        "FoodPrice": 6.50,
+        "Unavailable": "Wednesday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "7",
+        "FoodName": "Lamb Chop",
+        "FoodImage": "http://lh6.ggpht.com/8u1tdCrDkQFnMoXw2LRdO9NGqNjLJK7M7EMf6JrUWfLWby1UAFSDdg1Z37rPEfPD0pNiL3x91k6H3JMv_3yInpY=s800",
+        "FoodPrice": 8.90,
+        "Unavailable": "Monday",
+        "SpecialMenuStartTime": 1030,
+        "SpecialMenuEndTime": 1630
+    },
+    {
+        "StallID": "8",
+        "FoodName": "Laksa",
+        "FoodImage": "https://burpple-3.imgix.net/foods/406c767ea46a62042381585047_original.?w=645&dpr=1&fit=crop&q=80&auto=format",
+        "FoodPrice": 5.50,
+        "Unavailable": "Thursday",
+        "SpecialMenuStartTime": 930,
+        "SpecialMenuEndTime": 1430
+    },
+    {
+        "StallID": "8",
+        "FoodName": "Yong Tau Foo (Soup)",
+        "FoodImage": "https://cheflim.files.wordpress.com/2014/10/img_0323.jpg",
+        "FoodPrice": 4.50,
+        "Unavailable": "Tuesday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
+    },
+    {
+        "StallID": "8",
+        "FoodName": "Yong Tau Foo (Dry)",
+        "FoodImage": "https://s3.burpple.com/foods/981d4391fc7156bfa2816192_original.?1378876936",
+        "FoodPrice": 3.90,
+        "Unavailable": "Monday",
+        "SpecialMenuStartTime": 0,
+        "SpecialMenuEndTime": 0
     }
+    
 ]
