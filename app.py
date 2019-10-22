@@ -1,5 +1,5 @@
 #Import Python Web Framework (Flask)
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 #Get Stall Data stored in function/stall.py
 from function.stall import GetAllStall, QueryStallByTimeSlot
 #Get Menu Items stored in function/menuitems.py
@@ -62,32 +62,41 @@ def StallPage():
 #For Example: When user use the waiting list function
 @app.route("/menu/<string:id>", methods=['GET','POST'])
 def MenuPage(id):
-    queuenumber = 0
-    form = QueueSystem(request.form)
-    
-    #Get Current time
-    currenttime = int(GetCurrentTime())
-    #Get the filtered stalls based on their ID
-    MenuItems = StallMenu(id)
+    try:
+        #Convert Paramters into int
+        stallID = int(id)
+        #Check if Stall is not in range
+        if stallID < 0 or stallID > 8:
+            #Render and error 404 page
+            return render_template('404.html'), 404
+        #Set default queue number to 0
+        queuenumber = 0
+        form = QueueSystem(request.form)
+        #Get Current time
+        currenttime = int(GetCurrentTime())
+        #Get the filtered stalls based on their ID
+        MenuItems = StallMenu(id)
+        #Get the filtered stall based on their ID that is a special menu based on time
+        SpecialMenuItems = SpecialMenu(id)
+        #Get the filtered stall based on their ID that unavailable on current day [Monday,Tuess]
+        UnavailableDayItems = UnavailableDayMenu(id)
+        #Get the filtered stall base on their ID that available on the current day and time
+        AvailableMenuItems = AvailableMenu(id)
 
-    #Get the filtered stall based on their ID that is a special menu based on time
-    SpecialMenuItems = SpecialMenu(id)
+        if request.method == 'POST' and form.validate():
+            queuenumber = form.queuenumber.data
+            queuenumber = int(queuenumber) * 2
+            #It will give user menu.html after the user has used the waiting list function
+            #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
+            return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+        else:
+            #It will give users menu.html page by default
+            #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
+            return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
+    except:
+        #Catch error if user type in a random character on link
+        return render_template('404.html'), 404
 
-    #Get the filter stall based on their Id that unavailable on current day [Monday,Tuess]
-    UnavailableDayItems = UnavailableDayMenu(id)
-
-    AvailableMenuItems = AvailableMenu(id)
-
-    if request.method == 'POST' and form.validate():
-        queuenumber = form.queuenumber.data
-        queuenumber = int(queuenumber) * 2
-        #It will give user menu.html after the user has used the waiting list function
-        #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
-    else:
-        #It will give users menu.html page by default
-        #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('menu.html',id=id, stall = Stall, menu = MenuItems, available = AvailableMenuItems, special = SpecialMenuItems, unavailable= UnavailableDayItems, today = GetDay, day = DayOnly, key=key, form=form, queuenumber=queuenumber, currenttime=currenttime)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/thanks
 #GET Request happens when you just load the page normally with parameters
@@ -106,7 +115,7 @@ def ChatBot():
     return reply
 
 @app.errorhandler(404) 
-def not_found(e):
+def Error404(e):
     #inbuilt function which takes error as parameter 
     #It will give users 404.html page by default
     #This is handle user types in any random link in our website like https://cz1003.herokuapp.com/haha or etc...
