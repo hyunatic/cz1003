@@ -66,9 +66,9 @@ def MenuPage(id):
         #Convert Paramters into int
         stallID = int(id)
         #Check if Stall is not in range
-        if stallID < 0 or stallID > 8:
-            #Render and error 404 page
-            return render_template('404.html'), 404
+        if stallID < 1 or stallID > 8:
+            #Jump into the expection block and Render and error 404 page
+            raise Exception
         #Set default queue number to 0
         queuenumber = 0
         form = QueueSystem(request.form)
