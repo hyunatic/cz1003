@@ -65,8 +65,8 @@ def MenuPage(id):
     try:
         #Convert Paramters into int
         stallID = int(id)
-        #Check if Stall is not in range
-        if stallID < 1 or stallID > 8:
+        #Check if Stall is not within range
+        if not (0 < stallID < 9):
             #Jump into the expection block and Render and error 404 page
             raise Exception
         #Set default queue number to 0

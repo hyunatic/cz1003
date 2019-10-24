@@ -1,5 +1,8 @@
+<!-- Layout.html is the master page -->
 {% extends 'layout.html' %}
+<!-- Any syntax within Curly braces relates to python data pass as properties from app.py -->
 
+<!-- Start of content block -->
 {% block body %}
 <div class="container-fluid">
     <div class="row">
@@ -52,6 +55,7 @@
                     <div class="tab-content">
                         <div class="tab-pane {{stalltab}}" id="profile">
                             <div class="row">
+                                <!-- Loops the entire stall list -->
                                 {% for FoodStall in stall %}
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="card mb-3">
@@ -66,6 +70,7 @@
                                     </div>
                                 </div>
                                 {% endfor %}
+                                <!-- End of for loop loop statement -->
                             </div>
                         </div>
                         <div class="tab-pane {{searchtab}}" id="messages">
@@ -78,6 +83,7 @@
                                                     <i class="material-icons">date_range</i>
                                                 </span>
                                             </div>
+                                            <!-- Generate an HTML input tag with necessary error checking stated in form/SearchStallByDate.py -->
                                             {{form.date(class_="form-control", placeholder="Select Date")}}
                                         </div>
                                     </div>
@@ -88,6 +94,7 @@
                                                     <i class="material-icons">alarm</i>
                                                 </span>
                                             </div>
+                                            <!-- Generate an HTML input tag with necessary error checking stated in form/SearchStallByDate.py -->
                                             {{form.timeslot(class_="form-control")}}
                                         </div>
                                     </div>
@@ -97,6 +104,7 @@
                                 </div>
                             </form>
                             <div class="row">
+                                 <!-- Display special menu item list that's filtered from python function/stall.py -->
                                 {% for FoodStall in filteredstall %}
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="card mb-3">
@@ -126,3 +134,4 @@
 </div>
 
 {% endblock %}
+<!-- End of content block -->
