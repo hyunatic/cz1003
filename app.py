@@ -14,8 +14,8 @@ from form.SearchStallByDate import SearchStallByDate
 from form.QueueSystem import QueueSystem
 #Import chatbot function
 from function.chatbot import ChatBotReply
-import requests
-import json 
+#Import NTU Twitter Posts from function/twitter.py
+from function.twitter import Twitter
 
 #Initialize Flask App
 app = Flask(__name__)
@@ -41,6 +41,7 @@ def HomePage():
 #For Example: When user search stall function
 @app.route("/stall", methods=['GET', 'POST'])
 def StallPage():
+    twitter = Twitter()
     form = SearchStallByDate(request.form)
     stalltab = "active"
     searchtab = ""
@@ -52,11 +53,11 @@ def StallPage():
         searchtab = "active"
         #It will give user stall.html after the user has used the search function
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html', stall = Stall, today = GetDay, form=form, filteredstall=filteredstall, stalltab=stalltab, searchtab=searchtab)
+        return render_template('stall.html', stall = Stall, today = GetDay, form=form, filteredstall=filteredstall, stalltab=stalltab, searchtab=searchtab, twitter=twitter)
     elif request.method == 'GET':
         #It will give users stall.html page by default
         #The Additional Parameters is to pass data [Stall, Menu] into the HTML page as propeties
-        return render_template('stall.html', stall = Stall, today = GetDay, form=form, stalltab=stalltab, searchtab=searchtab)
+        return render_template('stall.html', stall = Stall, today = GetDay, form=form, stalltab=stalltab, searchtab=searchtab, twitter=twitter)
 
 #Whenever user access our website link: https://cz1003.herokuapp.com/menu/1
 #GET Request happens when you just load the page normally with parameters
@@ -115,11 +116,6 @@ def ChatBot():
     reply = ChatBotReply(userText)
     #Display Output to HTML at StallPage
     return reply
-
-@app.route("/twitter")
-def Twitter():
-    r = requests.get('https://breadplaza.com/api/public/index.php/api/ntusg')
-    return r.content
 
 @app.errorhandler(404) 
 def Error404(e):

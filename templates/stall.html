@@ -22,7 +22,8 @@
                     <div id="chatbox"></div>
                     <div id="userInput">
                         <form>
-                            <input id="textInput" type="text" class="form-control" name="msg" placeholder="If you lost, must ask me hor!" />
+                            <input id="textInput" type="text" class="form-control" name="msg"
+                                placeholder="If you lost, must ask me hor!" />
                         </form>
                     </div>
                 </div>
@@ -44,6 +45,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{searchtab}}" href="#messages" data-toggle="tab">
                                         <i class="material-icons">query_builder</i> Search by Time
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#twitter" data-toggle="tab">
+                                        <i class="material-icons">notifications</i> Twitter News
                                         <div class="ripple-container"></div>
                                     </a>
                                 </li>
@@ -104,7 +111,7 @@
                                 </div>
                             </form>
                             <div class="row">
-                                 <!-- Display special menu item list that's filtered from python function/stall.py -->
+                                <!-- Display special menu item list that's filtered from python function/stall.py -->
                                 {% for FoodStall in filteredstall %}
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="card mb-3">
@@ -120,6 +127,24 @@
                                             </p>
                                             <a href="menu/{{FoodStall.StallID}}" class="btn btn-warning">View Menu <i
                                                     class="material-icons">send</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="twitter">
+                            <div class="row">
+                                {% for twitter in twitter %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card mb-3">
+                                        <img class="card-img-top" src="{{twitter.Image}}" height="150"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title"> {{twitter.Name}} </h4>
+                                            <p class="card-text"> {{twitter.Text}} </p>
+                                            <a href="{{twitter.Url}}" target="_BLANK" class="btn btn-success">View Tweet <i
+                                                    class="material-icons">double_arrow</i></a>
                                         </div>
                                     </div>
                                 </div>
