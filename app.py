@@ -14,6 +14,8 @@ from form.SearchStallByDate import SearchStallByDate
 from form.QueueSystem import QueueSystem
 #Import chatbot function
 from function.chatbot import ChatBotReply
+import requests
+import json 
 
 #Initialize Flask App
 app = Flask(__name__)
@@ -113,6 +115,11 @@ def ChatBot():
     reply = ChatBotReply(userText)
     #Display Output to HTML at StallPage
     return reply
+
+@app.route("/twitter")
+def Twitter():
+    r = requests.get('https://breadplaza.com/api/public/index.php/api/ntusg')
+    return r.content
 
 @app.errorhandler(404) 
 def Error404(e):
