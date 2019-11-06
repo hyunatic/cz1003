@@ -10,18 +10,32 @@ def Twitter():
     twitterDictionary = {}
     #Create Empty List for Iteration in stall.html
     twitterPostList = []
-    for i in range(len(twitter)):
+    try:
+        for i in range(len(twitter)):
         #Create Custom Dictonary for twitter response
-        twitterDictionary["Name"] = twitter[i]["user"]["name"]
-        twitterDictionary["Image"] = twitter[i]["user"]["profile_banner_url"]
-        twitterDictionary["Url"] = twitter[i]["entities"]["urls"][0]["url"]
-        twitterDictionary["Posted"] = twitter[i]["created_at"][:-14]
-        twitterDictionary["Text"] = twitter[i]["text"]
+            twitterDictionary["Name"] = twitter[i]["user"]["name"]
+            twitterDictionary["Image"] = twitter[i]["user"]["profile_banner_url"]
+            twitterDictionary["Url"] = twitter[i]["entities"]["urls"][0]["url"]
+            twitterDictionary["Posted"] = twitter[i]["created_at"][:-14]
+            twitterDictionary["Text"] = twitter[i]["text"]
 
-        #Append Dictonary to list
-        twitterPostList.append(twitterDictionary.copy())
-    #Pass Twitter News post to app.py (Flask App)
-    return twitterPostList
+            #Append Dictonary to list
+            twitterPostList.append(twitterDictionary.copy())
+    except:
+        del twitterPostList[:]
+        for i in range(len(twitter)):
+        #Create Custom Dictonary for twitter response
+            twitterDictionary["Name"] = twitter[i]["user"]["name"]
+            twitterDictionary["Image"] = twitter[i]["user"]["profile_banner_url"]
+            twitterDictionary["Url"] = "https://twitter.com/ntusg"
+            twitterDictionary["Posted"] = twitter[i]["created_at"][:-14]
+            twitterDictionary["Text"] = twitter[i]["text"]
+
+            #Append Dictonary to list
+            twitterPostList.append(twitterDictionary.copy())
+    finally:
+        #Pass Twitter News post to app.py (Flask App)
+        return twitterPostList
     
     
     
