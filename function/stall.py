@@ -2,6 +2,7 @@
 from datetime import date, timedelta, datetime
 import json
 
+#Created by Amadeus
 #Load Stall Data from JSON File
 #File path is viewed from './app.py' Flask App directory
 with open('model/stall.json') as data:

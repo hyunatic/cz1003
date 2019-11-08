@@ -1,6 +1,7 @@
 import requests
 import json 
 
+#Created by Iskandar
 def Twitter():
     #Get Request from Personal Twitter Crawler
     TwitterResponse = requests.get('https://breadplaza.com/api/public/index.php/api/ntusg')

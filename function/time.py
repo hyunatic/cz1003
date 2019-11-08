@@ -1,6 +1,7 @@
 #Import Date function for query
 from datetime import date, timedelta, datetime
 
+#Created by Iskandar
 def GetCurrentTime():
     #Create today's time in this format (2040)
     currenttime = datetime.now().strftime("%H%M")

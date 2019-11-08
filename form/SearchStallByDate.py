@@ -6,6 +6,7 @@ from wtforms.fields.html5 import DateField
 from function.time import GetTimeRange
 
 #Call GetTimeRange function located in data/time.py
+#Created by Amadeus
 TimeSlot = GetTimeRange()
 
 class SearchStallByDate(Form):

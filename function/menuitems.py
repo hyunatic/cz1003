@@ -2,6 +2,7 @@
 import json
 from function.time import GetCurrentTime, GetDayOnly
 
+#Created by Iskandar
 #Load Menu Data from JSON File
 #File path is viewed from './app.py' Flask App directory
 with open('model/menu.json') as data:
